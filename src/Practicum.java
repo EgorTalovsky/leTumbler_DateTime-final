@@ -63,12 +63,11 @@ class Practicum {
             int flightDurationHours,
             int flightDurationMinutes
     ) {
+        try {
             Airport departureAirport = AirportDatabase.getAirportByCode(departureAirportCode);
             Airport arrivalAirport = AirportDatabase.getAirportByCode(arrivalAirportCode);
 
-            if (departureAirport == null || arrivalAirport == null) {
-                return;
-            }
+
             // С помощью класса AirportDatabase получите данные об аэропортах вылета и посадки.
             // При получении исключения выведите сообщение исключения.
             // Создайте экземпляр ZonedDateTime с помощью formattedDepartureTime и зоны аэропорта вылета.
@@ -121,7 +120,12 @@ class Practicum {
             } else {
                 System.out.println("Удачного полёта!");
             }
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+            return;
         }
+
+    }
 
     private static void printTicket(
             String departureTime,

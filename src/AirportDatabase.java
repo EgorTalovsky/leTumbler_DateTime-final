@@ -35,21 +35,16 @@ class AirportDatabase {
          * VVO - vladivostok
          * Для неверного кода пробросьте исключение.
          */
-        try {
-            switch (airportCode) {
-                case "VKO":
-                    return vnukovo;
-                case "LED":
-                    return pulkovo;
-                case "SVX":
-                    return koltsovo;
-                case "VVO":
-                    return vladivostok;
-                default: throw new IllegalStateException();
-            }
-        } catch (IllegalStateException e) {
-            System.out.println("Неизвестный код аэропорта: " + airportCode);
+        switch (airportCode) {
+            case "VKO":
+                return vnukovo;
+            case "LED":
+                return pulkovo;
+            case "SVX":
+                return koltsovo;
+            case "VVO":
+                return vladivostok;
+            default: throw new IllegalStateException("Неизвестный код аэропорта: " + airportCode);
         }
-        return null;
     }
 }
